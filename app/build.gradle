@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    signingConfigs {
+        debug {
+            keyAlias 'hanbaokun'
+            keyPassword 'hanbaokun'
+            storeFile file('D:\\workspace\\others\\MyWeather\\weather.jks')
+            storePassword 'hanbaokun'
+        }
+    }
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.syhd.myweather"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.0.0-beta1'
+//    compile files('libs/mobAPI-1.0.6.jar')
+//    compile files('libs/MobCommons-2016.0727.1113.jar')
+//    compile files('libs/MobTools-2016.0727.1113.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    //网络框架
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxjava:1.1.9'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //图片缓存
+//    compile 'com.squareup.picasso:picasso:2.5.2'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    /*//屏幕适配
+    compile 'com.zhy:autolayout:1.4.3'*/
+    //listview适配器
+//    compile 'com.classic.adapter:commonadapter:1.2'
+    compile project(':PullToRefresh')
+    //指示器
+    compile 'me.relex:circleindicator:1.2.1@aar'
+}
+repositories {
+    mavenCentral()
+}
+

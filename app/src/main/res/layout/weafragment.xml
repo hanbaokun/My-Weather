@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/background"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_01">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_trans10"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/topactionbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/weather_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="朝阳"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+        <!--<View
+            style="@style/divider_line_wea"/>-->
+
+        <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+            android:id="@+id/pull_refresh_scrollview"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:overScrollMode="never"
+            ptr:ptrAnimationStyle="rotate"
+            ptr:ptrHeaderSubTextColor="@color/white_trans60"
+            ptr:ptrHeaderTextColor="@color/white_trans90">
+
+            <LinearLayout
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="250dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/temperature1"
+                            style="@style/wea_degree"
+                            android:contentDescription="@null"
+                            android:src="@drawable/number_0"/>
+
+                        <ImageView
+                            android:id="@+id/temperature2"
+                            style="@style/wea_degree"
+                            android:contentDescription="@null"
+                            android:src="@drawable/number_0"/>
+
+                        <ImageView
+                            android:id="@+id/temperature3"
+                            style="@style/wea_degree"
+                            android:contentDescription="@null"/>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                style="@style/wea_degree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_centigrade"/>
+
+                            <TextView
+                                android:id="@+id/weather_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingLeft="6dp"
+                                android:text="多云"
+                                android:textColor="@color/white_trans90"
+                                android:textSize="18sp"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/aqi"
+                        style="@style/wea_prompt"
+                        android:drawableLeft="@drawable/ic_quality_nice"/>
+
+                    <TextView
+                        android:id="@+id/humidity"
+                        style="@style/wea_prompt"
+                        android:drawableLeft="@drawable/ic_humidity"/>
+
+                    <TextView
+                        android:id="@+id/wind"
+                        style="@style/wea_prompt"
+                        android:drawableLeft="@drawable/ic_wind_3"/>
+
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/wea_prompt"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/white_trans90"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/update_time"
+                        style="@style/wea_prompt"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/white_trans90"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_line_wea"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout style="@style/wea_forecast_llyt">
+
+                        <TextView
+                            style="@style/wea_forecast_title"
+                            android:text="@string/today"/>
+
+                        <LinearLayout style="@style/wea_forecast_content_llyt">
+
+                            <ImageView
+                                android:id="@+id/weather_type_iv_today"
+                                style="@style/wea_forecast_content_iv"/>
+
+                            <RelativeLayout style="@style/wea_forecast_content_degree_rlyt">
+
+                                <TextView
+                                    android:id="@+id/temp_high_today"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentTop="true"/>
+
+                                <TextView
+                                    android:id="@+id/temp_low_today"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentBottom="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/today_wea"
+                            style="@style/wea_forecast_title"
+                            android:text="阵雨"/>
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/divider_line_wea_vertical"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <LinearLayout style="@style/wea_forecast_llyt">
+
+                        <TextView
+                            style="@style/wea_forecast_title"
+                            android:text="@string/tomorrow"/>
+
+                        <LinearLayout style="@style/wea_forecast_content_llyt">
+
+                            <ImageView
+                                android:id="@+id/weather_type_iv_tomorrow"
+                                style="@style/wea_forecast_content_iv"/>
+
+                            <RelativeLayout style="@style/wea_forecast_content_degree_rlyt">
+
+                                <TextView
+                                    android:id="@+id/temp_high_tomorrow"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentTop="true"/>
+
+                                <TextView
+                                    android:id="@+id/temp_low_tomorrow"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentBottom="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tomorrow_wea"
+                            style="@style/wea_forecast_title"
+                            android:text="阵雨"/>
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/divider_line_wea_vertical"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <LinearLayout style="@style/wea_forecast_llyt">
+
+                        <TextView
+                            style="@style/wea_forecast_title"
+                            android:text="@string/the_day_of_tomorrow"/>
+
+                        <LinearLayout style="@style/wea_forecast_content_llyt">
+
+                            <ImageView
+                                android:id="@+id/weather_type_iv_day_after_tomorrow"
+                                style="@style/wea_forecast_content_iv"/>
+
+                            <RelativeLayout style="@style/wea_forecast_content_degree_rlyt">
+
+                                <TextView
+                                    android:id="@+id/temp_high_day_after_tomorrow"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentTop="true"/>
+
+                                <TextView
+                                    android:id="@+id/temp_low_day_after_tomorrow"
+                                    style="@style/wea_forecast_content_degree_rlyt_tv"
+                                    android:layout_alignParentBottom="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/the_day_of_tomorrow_wea"
+                            style="@style/wea_forecast_title"
+                            android:text="阵雨"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_line_wea"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    style="@style/wea_area_llyt"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <LinearLayout
+                            style="@style/wea_days_forecast_llyt"
+                            android:layout_marginTop="0dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week1"
+                                style="@style/wea_days_forecast_tv_trans"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week2"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week3"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week4"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week5"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_week6"
+                                style="@style/wea_days_forecast_tv"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/wea_days_forecast_llyt"
+                            >
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day1"
+                                style="@style/wea_days_forecast_tv2_trans"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day2"
+                                style="@style/wea_days_forecast_tv2"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day3"
+                                style="@style/wea_days_forecast_tv2"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day4"
+                                style="@style/wea_days_forecast_tv2"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day5"
+                                style="@style/wea_days_forecast_tv2"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_day6"
+                                style="@style/wea_days_forecast_tv2"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/wea_days_forecast_llyt"
+                            >
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv1"
+                                style="@style/wea_days_forecast_iv_trans"/>
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv2"
+                                style="@style/wea_days_forecast_iv"/>
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv3"
+                                style="@style/wea_days_forecast_iv"/>
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv4"
+                                style="@style/wea_days_forecast_iv"/>
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv5"
+                                style="@style/wea_days_forecast_iv"/>
+
+                            <ImageView
+                                android:id="@+id/wea_days_forecast_weather_day_iv6"
+                                style="@style/wea_days_forecast_iv"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/wea_days_forecast_llyt"
+                            >
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv1"
+                                style="@style/wea_days_forecast_tv_trans"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv2"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv3"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv4"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv5"
+                                style="@style/wea_days_forecast_tv"/>
+
+                            <TextView
+                                android:id="@+id/wea_days_forecast_weather_day_tv6"
+                                style="@style/wea_days_forecast_tv"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.syhd.myweather.customview.LineChartViewDouble
+                        android:id="@+id/line_char"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        />
+
+                    <LinearLayout
+                        style="@style/wea_days_forecast_llyt"
+                        android:layout_marginTop="0dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv1"
+                            style="@style/wea_days_forecast_tv_trans"
+                            android:layout_marginTop="0dp"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv2"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv3"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv4"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv5"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_weather_night_tv6"
+                            style="@style/wea_days_forecast_tv"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/wea_days_forecast_llyt"
+                        >
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv1"
+                            style="@style/wea_days_forecast_iv_trans"/>
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv2"
+                            style="@style/wea_days_forecast_iv"/>
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv3"
+                            style="@style/wea_days_forecast_iv"/>
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv4"
+                            style="@style/wea_days_forecast_iv"/>
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv5"
+                            style="@style/wea_days_forecast_iv"/>
+
+                        <ImageView
+                            android:id="@+id/wea_days_forecast_weather_night_iv6"
+                            style="@style/wea_days_forecast_iv"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/wea_days_forecast_llyt"
+                        >
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv1"
+                            style="@style/wea_days_forecast_tv_trans"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv2"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv3"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv4"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv5"
+                            style="@style/wea_days_forecast_tv"/>
+
+                        <TextView
+                            android:id="@+id/wea_days_forecast_wind_direction_tv6"
+                            style="@style/wea_days_forecast_tv"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_line_wea"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    style="@style/wea_area_llyt">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@color/white_trans20"
+                            />
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+
+                            <TableRow>
+
+                                <RelativeLayout
+                                    android:id="@+id/wea_life_index_rlyt_dress"
+                                    style="@style/wea_life_index_rlyt_left"
+                                    >
+
+                                    <ImageView
+                                        style="@style/wea_life_index_iv_left"
+                                        android:src="@drawable/ic_lifeindex_dress"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/wea_life_tv_index_dress"
+                                        style="@style/wea_life_index_tv_detail"/>
+
+                                    <TextView
+                                        style="@style/wea_life_index_tv_title"
+                                        android:layout_below="@id/wea_life_tv_index_dress"
+                                        android:text="@string/dress"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/wea_life_index_rlyt_cold"
+                                    style="@style/wea_life_index_rlyt_right"
+                                    >
+
+                                    <ImageView
+                                        style="@style/wea_life_index_iv_right"
+                                        android:src="@drawable/ic_lifeindex_coldl"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/wea_life_index_tv_cold"
+                                        style="@style/wea_life_index_tv_detail"
+                                        android:layout_marginRight="0dp"/>
+
+                                    <TextView
+                                        style="@style/wea_life_index_tv_title"
+                                        android:layout_below="@id/wea_life_index_tv_cold"
+                                        android:layout_marginRight="0dp"
+                                        android:text="@string/cold"/>
+
+                                </RelativeLayout>
+
+                            </TableRow>
+
+                            <View
+                                style="@style/divider_line_wea_life_index_horizontal"/>
+
+                            <TableRow>
+
+                                <RelativeLayout
+                                    android:id="@+id/wea_life_index_rlyt_morning_exercise"
+                                    style="@style/wea_life_index_rlyt_left"
+                                    >
+
+                                    <ImageView
+                                        style="@style/wea_life_index_iv_left"
+                                        android:src="@drawable/ic_lifeindex_morning_exercise"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/wea_life_index_tv_morning_exercise"
+                                        style="@style/wea_life_index_tv_detail"/>
+
+                                    <TextView
+                                        style="@style/wea_life_index_tv_title"
+                                        android:layout_below="@id/wea_life_index_tv_morning_exercise"
+                                        android:text="@string/morning_exercise"/>
+
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/wea_life_index_rlyt_carwash"
+                                    style="@style/wea_life_index_rlyt_left"
+                                    >
+
+                                    <ImageView
+                                        style="@style/wea_life_index_iv_left"
+                                        android:src="@drawable/ic_lifeindex_carwash"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/wea_life_index_tv_car_wash"
+                                        style="@style/wea_life_index_tv_detail"/>
+
+                                    <TextView
+                                        style="@style/wea_life_index_tv_title"
+                                        android:layout_below="@id/wea_life_index_tv_car_wash"
+                                        android:text="@string/car_wash"/>
+
+                                </RelativeLayout>
+
+
+                            </TableRow>
+                        </TableLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    </LinearLayout>
+</RelativeLayout>
